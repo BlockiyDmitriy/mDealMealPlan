@@ -1,4 +1,4 @@
-package com.example.mdmp.ui.slideshow;
+package com.example.mdmp.ui.diary;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mdmp.R;
 
-public class SlideshowFragment extends Fragment {
+public class DiaryFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private DiaryViewModel diaryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        diaryViewModel =
+                ViewModelProviders.of(this).get(DiaryViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        final TextView textView = root.findViewById(R.id.text_diary);
+        diaryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
