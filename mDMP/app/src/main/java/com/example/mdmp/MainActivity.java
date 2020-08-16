@@ -1,12 +1,10 @@
 package com.example.mdmp;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
 import com.example.mdmp.db.db;
-import com.example.mdmp.db.dbParser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -31,13 +29,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         XmlPullParser xpp = getResources().getXml(R.xml.db);
-        dbParser parser = new dbParser();
-        if(parser.parse(xpp))
-        {
-            for(db prod: parser.getProducts()){
-                Log.d("XML", prod.toString());
-            }
-        }
+        //db db = new db(xpp);
+        db db = new db();
+        db.parse(xpp);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
