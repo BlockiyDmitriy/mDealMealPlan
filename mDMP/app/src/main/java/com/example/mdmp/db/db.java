@@ -8,14 +8,15 @@ import org.xmlpull.v1.XmlPullParser;
 import java.util.ArrayList;
 
 public class db {
-// Reads the last product
+    // https://medium.com/@ssaurel/parsing-xml-data-in-android-apps-71ef607fbb16 solution option
+    // Reads the last product
     public ArrayList<Category> categorys;
 
-    public db(){
+    public db() {
         categorys = new ArrayList<>();
     }
 
-    public boolean parse(XmlPullParser xpp){
+    public boolean parse(XmlPullParser xpp) {
         boolean status = true;
         Product currentProduct = null;
         Category currentCategory = new Category();
@@ -23,25 +24,24 @@ public class db {
         String textValue = "";
         int i = 0;
 
-        try{
+        try {
             int eventType = xpp.getEventType();
-            while(eventType != XmlPullParser.END_DOCUMENT){
+            while (eventType != XmlPullParser.END_DOCUMENT) {
 
                 String tagName = xpp.getName();
 
-                switch (eventType){
+                switch (eventType) {
                     // если это открывающий тег элемента product, то создаем новый объект Product
                     // и устанавливаем, что мы находимся внутри элемента product
                     case XmlPullParser.START_TAG:
-                       if("Category".equalsIgnoreCase(tagName)){
-                           String attributeValueName = xpp.getAttributeValue(null, "name");
-                           String attributeValueDescription = xpp.getAttributeValue(null, "description");
-                           currentCategory.setName(attributeValueName);
-                           currentCategory.setDescription(attributeValueDescription);
-                           inEntry = true;
-                           currentProduct = new Product();
-                        }
-                        else if("Product".equalsIgnoreCase(tagName)){
+                        if ("Category".equalsIgnoreCase(tagName)) {
+                            String attributeValueName = xpp.getAttributeValue(null, "name");
+                            String attributeValueDescription = xpp.getAttributeValue(null, "description");
+                            currentCategory.setName(attributeValueName);
+                            currentCategory.setDescription(attributeValueDescription);
+                            inEntry = true;
+                            currentProduct = new Product();
+                        } else if ("Product".equalsIgnoreCase(tagName)) {
                             inEntry = true;
                         }
                         break;
@@ -54,26 +54,25 @@ public class db {
                     // Если прочитан элемент product, то добавляем объект Product в коллекцию ArrayList
                     // и сбрываем переменную inEntry, указывая, что мы вышли из элемента product
                     case XmlPullParser.END_TAG:
-                        if(inEntry){
-                            if("Category".equalsIgnoreCase(tagName)) {
+                        if (inEntry) {
+                            if ("Category".equalsIgnoreCase(tagName)) {
                                 categorys.add(i, currentCategory);
                                 i++;
                                 inEntry = false;
-                            }
-                            else if("Product".equalsIgnoreCase(tagName)){
+                            } else if ("Product".equalsIgnoreCase(tagName)) {
                                 currentCategory.products.add(currentProduct);
                                 inEntry = false;
-                            } else if("Name".equalsIgnoreCase(tagName)){
+                            } else if ("Name".equalsIgnoreCase(tagName)) {
                                 currentProduct.setName(textValue);
-                            } else if("Gramms".equalsIgnoreCase(tagName)){
+                            } else if ("Gramms".equalsIgnoreCase(tagName)) {
                                 currentProduct.setGramms(textValue);
-                            } else if("Protein".equalsIgnoreCase(tagName)){
+                            } else if ("Protein".equalsIgnoreCase(tagName)) {
                                 currentProduct.setProtein(textValue);
-                            } else if("Fats".equalsIgnoreCase(tagName)){
+                            } else if ("Fats".equalsIgnoreCase(tagName)) {
                                 currentProduct.setFats(textValue);
-                            } else if("Carbs".equalsIgnoreCase(tagName)){
+                            } else if ("Carbs".equalsIgnoreCase(tagName)) {
                                 currentProduct.setCarbs(textValue);
-                            } else if("Calories".equalsIgnoreCase(tagName)){
+                            } else if ("Calories".equalsIgnoreCase(tagName)) {
                                 currentProduct.setCalories(textValue);
                             }
                         }
@@ -82,11 +81,10 @@ public class db {
                 }
                 eventType = xpp.next();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             status = false;
             e.printStackTrace();
         }
-        return  status;
+        return status;
     }
 }
