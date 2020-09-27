@@ -309,6 +309,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Logic_Layer\Business_Logic_Layer.csproj">
+      <Project>{2fa8a5a4-2443-4320-a023-628506771dcd}</Project>
+      <Name>Business_Logic_Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data_Access_Layer\Data_Access_Layer.csproj">
+      <Project>{2e2580ef-8191-4404-800c-38a904bffcc9}</Project>
+      <Name>Data_Access_Layer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

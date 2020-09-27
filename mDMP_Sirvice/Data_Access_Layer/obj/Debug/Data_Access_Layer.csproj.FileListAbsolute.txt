@@ -1,0 +1,14 @@
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\Data_Access_Layer.dll.config
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\Data_Access_Layer.dll
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\Data_Access_Layer.pdb
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\Business_Logic_Layer.dll
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\EntityFramework.dll
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\Business_Logic_Layer.pdb
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\EntityFramework.xml
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\obj\Debug\Data_Access_Layer.csprojAssemblyReference.cache
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\obj\Debug\Data_Access_Layer.csproj.CoreCompileInputs.cache
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\obj\Debug\Data_Access_Layer.csproj.CopyComplete
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\obj\Debug\Data_Access_Layer.dll
+E:\Git Hub\mDealMealPlan\mDMP_Sirvice\Data_Access_Layer\obj\Debug\Data_Access_Layer.pdb
