@@ -19,7 +19,7 @@ namespace Business_Logic_Layer
             throw new NotImplementedException();
         }
 
-        public string GetAllCategory()
+        public string GetAllProduct()
         {
             throw new NotImplementedException();
         }

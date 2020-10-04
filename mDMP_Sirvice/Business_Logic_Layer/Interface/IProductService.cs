@@ -9,7 +9,7 @@ namespace Business_Logic_Layer.Interface
     public interface IProductService
     {
         List<Product> GetAll();
-        string GetAllCategory();
+        string GetAllProduct();
         Product GetIdProduct(int id);
         void Replace();
         void SaveChang();
