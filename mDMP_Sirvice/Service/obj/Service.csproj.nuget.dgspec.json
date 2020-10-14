@@ -4,6 +4,35 @@
     "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Service\\Service.csproj": {}
   },
   "projects": {
+    "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj",
+        "projectName": "Business_Logic_Layer",
+        "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "projectName": "Data_Access_Layer",
+        "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj": {
+                "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -30,7 +59,14 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj": {
+                "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj"
+              },
+              "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+                "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,6 +77,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

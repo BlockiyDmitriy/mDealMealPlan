@@ -9,42 +9,33 @@ namespace Data_Access_Layer
 {
     class ReadWriteDb : IReadWriteDb
     {
+        /// <summary>
+        /// Add category in data base
+        /// </summary>
+        /// <param name="name"></param>
         public void AddCategory(string name)
         {
-            using (var context = new ConnectDbContext())
-            {
-                var category = new Category()
-                {
-                    Name = name
-                };
-                context.Category.Add(category);
-                context.SaveChanges();
-
-            };
+            throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Add product in data base
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="gramms"></param>
+        /// <param name="protein"></param>
+        /// <param name="fats"></param>
+        /// <param name="carbs"></param>
+        /// <param name="calories"></param>
         public void AddProduct(string name, double gramms, double protein, double fats, double carbs, double calories)
         {
-            using (var context = new ConnectDbContext())
-            {
-                var product = new Product()
-                {
-                    Name = name,
-                    Gramms = gramms,
-                    Protein = protein,
-                    Fats = fats,
-                    Carbs = carbs,
-                    Calories = calories
-                };
-                context.Product.Add(product);
-                context.SaveChanges();
-
-            };
+            throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Get all values from data base
+        /// </summary>
         public void GetAll()
         {
-
+            throw new NotImplementedException();
         }
     }
 }
