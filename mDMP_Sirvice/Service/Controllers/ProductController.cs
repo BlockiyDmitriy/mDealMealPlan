@@ -1,45 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 
 using Service.Models;
 
 namespace Service.Controllers
-{
-    // https://metanit.com/sharp/aspnet5/12.3.php
-    public class HomeController : Controller
+{ //https://metanit.com/sharp/aspnet5/12.3.php
+    public class ProductController : Controller
     {
         private ConnectDbContext _db;
-        public HomeController(ConnectDbContext context)
+        public ProductController(ConnectDbContext db)
         {
-            _db = context;
+            this._db = db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return new JsonResult(await _db.ProductModel.ToListAsync());
         }
         /// <summary>
-        /// Получение всех категорий
+        /// Получение всех продуктов
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> GetCategory()
+        public async Task<IActionResult> GetProduct()
         {
-            return View(await _db.CategoryModel.ToListAsync());
+            return View(await _db.ProductModel.ToListAsync());
         }
         /// <summary>
-        /// Добавление категории
+        /// Добавление прдукта
         /// </summary>
-        /// <param name="category"></param>
+        /// <param name="product"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Index(CategoryModel category)
+        public async Task<IActionResult> Index(ProductModel product)
         {
-            _db.CategoryModel.Add(category);
+            _db.ProductModel.Add(product);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -52,9 +49,9 @@ namespace Service.Controllers
         {
             if (id != null)
             {
-                CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
-                if (category != null)
-                    return View(category);
+                ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
+                if (product != null)
+                    return View(product);
             }
             return NotFound();
         }
@@ -67,16 +64,16 @@ namespace Service.Controllers
         {
             if (id != null)
             {
-                CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
-                if (category != null)
-                    return View(category);
+                ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
+                if (product != null)
+                    return View(product);
             }
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(CategoryModel category)
+        public async Task<IActionResult> Edit(ProductModel product)
         {
-            _db.CategoryModel.Update(category);
+            _db.ProductModel.Update(product);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -87,9 +84,9 @@ namespace Service.Controllers
         {
             if (id != null)
             {
-                CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
-                if (category != null)
-                    return View(category);
+                ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
+                if (product != null)
+                    return View(product);
             }
             return NotFound();
         }
@@ -103,10 +100,10 @@ namespace Service.Controllers
         {
             if (id != null)
             {
-                CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
-                if (category != null)
+                ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
+                if (product != null)
                 {
-                    _db.CategoryModel.Remove(category);
+                    _db.ProductModel.Remove(product);
                     await _db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }

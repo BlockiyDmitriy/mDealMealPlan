@@ -1,5 +1,4 @@
-﻿using Data_Access_Layer;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace Service.Models
             Database.EnsureCreated();   // создаем базу данных при первом обращении
         }
 
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<CategoryModel> CategoryModel { get; set; }
+        public DbSet<ProductModel> ProductModel { get; set; }
     }
 }

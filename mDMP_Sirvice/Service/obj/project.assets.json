@@ -1467,27 +1467,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Business_Logic_Layer/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/Business_Logic_Layer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Business_Logic_Layer.dll": {}
-        }
-      },
-      "Data_Access_Layer/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "Business_Logic_Layer": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Data_Access_Layer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Data_Access_Layer.dll": {}
-        }
       }
     }
   },
@@ -5663,22 +5642,10 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "Business_Logic_Layer/1.0.0": {
-      "type": "project",
-      "path": "../Business_Logic_Layer/Business_Logic_Layer.csproj",
-      "msbuildProject": "../Business_Logic_Layer/Business_Logic_Layer.csproj"
-    },
-    "Data_Access_Layer/1.0.0": {
-      "type": "project",
-      "path": "../Data_Access_Layer/Data_Access_Layer.csproj",
-      "msbuildProject": "../Data_Access_Layer/Data_Access_Layer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Business_Logic_Layer >= 1.0.0",
-      "Data_Access_Layer >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.9"
     ]
   },
@@ -5712,14 +5679,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {
-            "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj": {
-              "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Business_Logic_Layer\\Business_Logic_Layer.csproj"
-            },
-            "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj": {
-              "projectPath": "E:\\Git Hub\\mDealMealPlan\\mDMP_Sirvice\\Data_Access_Layer\\Data_Access_Layer.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
