@@ -19,9 +19,9 @@ namespace Service.Controllers
         {
             _db = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return new JsonResult(await _db.CategoryModel.ToListAsync());
         }
         /// <summary>
         /// Получение всех категорий
@@ -29,7 +29,7 @@ namespace Service.Controllers
         /// <returns></returns>
         public async Task<IActionResult> GetCategory()
         {
-            return View(await _db.CategoryModel.ToListAsync());
+            return new JsonResult(await _db.CategoryModel.ToListAsync());
         }
         /// <summary>
         /// Добавление категории
@@ -54,7 +54,7 @@ namespace Service.Controllers
             {
                 CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
                 if (category != null)
-                    return View(category);
+                    return new JsonResult(category);
             }
             return NotFound();
         }
@@ -69,7 +69,7 @@ namespace Service.Controllers
             {
                 CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
                 if (category != null)
-                    return View(category);
+                    return new JsonResult(category);
             }
             return NotFound();
         }
@@ -89,7 +89,7 @@ namespace Service.Controllers
             {
                 CategoryModel category = await _db.CategoryModel.FirstOrDefaultAsync(p => p.Id == id);
                 if (category != null)
-                    return View(category);
+                    return new JsonResult(category);
             }
             return NotFound();
         }

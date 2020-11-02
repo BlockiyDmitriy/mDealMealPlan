@@ -51,7 +51,7 @@ namespace Service.Controllers
             {
                 ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
                 if (product != null)
-                    return View(product);
+                    return new JsonResult(product);
             }
             return NotFound();
         }
@@ -66,7 +66,7 @@ namespace Service.Controllers
             {
                 ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
                 if (product != null)
-                    return View(product);
+                    return new JsonResult(product);
             }
             return NotFound();
         }
@@ -86,7 +86,7 @@ namespace Service.Controllers
             {
                 ProductModel product = await _db.ProductModel.FirstOrDefaultAsync(p => p.Id == id);
                 if (product != null)
-                    return View(product);
+                    return new JsonResult(product);
             }
             return NotFound();
         }
