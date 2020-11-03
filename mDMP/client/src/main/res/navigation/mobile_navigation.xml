@@ -9,7 +9,11 @@
         android:id="@+id/nav_diary"
         android:name="com.example.client.ui.diary.DiaryFragment"
         android:label="@string/menu_diary"
-        tools:layout="@layout/fragment_diary" />
+        tools:layout="@layout/fragment_diary" >
+        <action
+            android:id="@+id/action_nav_diary_to_statisticActivity"
+            app:destination="@id/statisticActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
@@ -22,4 +26,9 @@
         android:name="com.example.client.ui.calendar.CalendarFragment"
         android:label="@string/menu_calendar"
         tools:layout="@layout/fragment_calendar" />
+    <activity
+        android:id="@+id/statisticActivity"
+        android:name="com.example.client.ui.statistic.StatisticActivity"
+        android:label="activity_statistic"
+        tools:layout="@layout/activity_statistic" />
 </navigation>

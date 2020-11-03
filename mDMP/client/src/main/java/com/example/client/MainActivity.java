@@ -3,6 +3,7 @@ package com.example.client;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +12,7 @@ import com.example.client.ui.statistic.StatisticActivity;
 import com.example.client.ui.statistic.StatisticFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager myFragmentManager;
     DiaryFragment fDiary;
 
+    NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_diary, R.id.nav_profile, R.id.nav_calendar)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
@@ -64,17 +68,13 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+// TODO
 //    https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/560-urok-27-navigation-navigationui.html
-    public void onNavigationItemSelected(int item) {
-        FragmentTransaction fragmentTransaction = myFragmentManager
-                .beginTransaction();
-        Bundle bundle = new Bundle();
-        if (item == 1) {
-            fStatistic.setArguments(bundle);
-            fragmentTransaction.replace(R.id.constatin_fragment, fStatistic);
-//            Intent i = new Intent(this, StatisticActivity.class);
-//            startActivity(i);
+//    https://habr.com/ru/post/416025/
+    public void onNavigationItemSelected(int i) {
+        if (i == 1) {
+            Intent intent = new Intent(this, StatisticActivity.class);
+            startActivity(intent);
         }
-        fragmentTransaction.commit();
     }
 }
