@@ -3,22 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appbar"-->
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp">-->
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"/>-->
 
-    </com.google.android.material.appbar.AppBarLayout>
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -41,7 +40,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

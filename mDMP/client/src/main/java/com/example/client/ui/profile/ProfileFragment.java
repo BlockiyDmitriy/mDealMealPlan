@@ -7,6 +7,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import com.example.client.R;
 
 public class ProfileFragment extends Fragment {
 
+    Spinner dropDown;
     private ProfileViewModel profileViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,6 +38,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        dropDown = root.findViewById(R.id.spinner_lifestyle);
+        ArrayAdapter<?> adapter =
+                ArrayAdapter.createFromResource(getContext(), R.array.dropDownLifestyle, android.R.layout.simple_spinner_item);
+
+        dropDown.setAdapter(adapter);
+        dropDown.setSelection(1);
         setHasOptionsMenu(true);
         return root;
     }

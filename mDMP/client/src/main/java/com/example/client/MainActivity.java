@@ -31,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    StatisticFragment fStatistic;
-    FragmentManager myFragmentManager;
-    DiaryFragment fDiary;
-
+//    StatisticFragment fStatistic;
+//    FragmentManager myFragmentManager;
+//    DiaryFragment fDiary;
     NavController navController;
 
     @Override
@@ -42,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myFragmentManager = getSupportFragmentManager();
-        fStatistic = new StatisticFragment();
-        fDiary = new DiaryFragment();
+//        myFragmentManager = getSupportFragmentManager();
+//        fStatistic = new StatisticFragment();
+//        fDiary = new DiaryFragment();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

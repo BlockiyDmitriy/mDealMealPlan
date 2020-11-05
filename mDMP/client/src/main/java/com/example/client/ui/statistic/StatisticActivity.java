@@ -1,18 +1,19 @@
 package com.example.client.ui.statistic;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Pie;
+import com.example.client.MainActivity;
 import com.example.client.R;
 
 import java.util.ArrayList;
@@ -25,44 +26,49 @@ public class StatisticActivity extends AppCompatActivity {
 
     AnyChartView anyChartView;
 
+
+    String[] nutritionalStr = {"Белки", "Жиры", "Углеводы"};
+    int[] nutritionalValue = {100, 200, 300};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
         setupPieChart();
     }
 
-    public void setupPieChart(){
+    public void setupPieChart() {
 
         Pie pie = AnyChart.pie();
 
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("John", 10000));
-        data.add(new ValueDataEntry("Jake", 12000));
-        data.add(new ValueDataEntry("Peter", 18000));
+        for (int i = 0; i < nutritionalStr.length; i++) {
+            data.add(new ValueDataEntry(nutritionalStr[i], nutritionalValue[i]));
+        }
 
         pie.data(data);
-        pie.title("chart");
+        pie.title("Статистика дня");
         anyChartView.setChart(pie);
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.statistic, menu); //запуск меню
-        return true;
-    }
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.statistic_back: {
-                break;
+            case android.R.id.home: {
+                this.finish();
+                return true;
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
             }
         }
-        return super.onOptionsItemSelected(item);
     }
-
 }

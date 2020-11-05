@@ -12,4 +12,9 @@
     <string name="statistics">Statistics</string>
     <string name="action_edit">Edit</string>
     <string name="accept">Accept</string>
+    <string-array name="dropDownLifestyle">
+        <item>Минимальный уровень активность</item>
+        <item>Средний уровень активности</item>
+        <item>Максимальный уровень активности</item>
+    </string-array>
 </resources>
