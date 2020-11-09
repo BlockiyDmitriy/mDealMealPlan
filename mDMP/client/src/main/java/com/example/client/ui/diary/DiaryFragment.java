@@ -49,8 +49,8 @@ public class DiaryFragment extends Fragment {
         products = new ArrayList<>();
 
         //Generate sample data
-        for (int i = 0; i<10; i++) {
-            products.add(new DiaryProduct("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i+1), 10, 50, 20));
+        for (int i = 0; i < 10; i++) {
+            products.add(new DiaryProduct("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i + 1), 10, 50, 20));
         }
 
         mAdapter = new DataAdapterRecyclerView(getContext(), products);
@@ -66,7 +66,7 @@ public class DiaryFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.edit: {
+            case R.id.add: {
                 break;
             }
             case R.id.statistic: {

@@ -10,8 +10,8 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_calendar">Calendar</string>
     <string name="statistics">Statistics</string>
-    <string name="action_edit">Edit</string>
     <string name="accept">Accept</string>
+    <string name="add">Add</string>
     <string-array name="dropDownLifestyle">
         <item>Минимальный уровень активность</item>
         <item>Средний уровень активности</item>

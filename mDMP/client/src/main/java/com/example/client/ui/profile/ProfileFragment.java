@@ -30,14 +30,6 @@ public class ProfileFragment extends Fragment {
                 ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        final TextView textView = root.findViewById(R.id.text_Profile);
-        profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
         dropDown = root.findViewById(R.id.spinner_lifestyle);
         ArrayAdapter<?> adapter =
                 ArrayAdapter.createFromResource(getContext(), R.array.dropDownLifestyle, android.R.layout.simple_spinner_item);
@@ -52,6 +44,7 @@ public class ProfileFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_acept: {
+
                 break;
             }
         }

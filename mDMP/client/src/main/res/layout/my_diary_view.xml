@@ -26,43 +26,43 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description"
                 android:layout_below="@id/name"
-                android:textAppearance="?android:textAppearanceMedium"/>
+                android:text="Description"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/protein"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Protein"
                 android:layout_below="@id/description"
-                android:textAppearance="?android:textAppearanceMedium"/>
+                android:text="Protein"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/fat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fat"
                 android:layout_below="@id/protein"
-                android:textAppearance="?android:textAppearanceMedium"/>
+                android:text="Fat"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/carbohydrates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Carbohydrates"
                 android:layout_below="@id/fat"
-                android:textAppearance="?android:textAppearanceMedium"/>
+                android:text="Carbohydrates"
+                android:textAppearance="?android:textAppearanceMedium" />
+
             <TextView
                 android:id="@+id/txtOptionDigit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="&#8942;"
-                android:textAppearance="?android:textAppearanceLarge"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:paddingLeft="@dimen/activity_horizontal_margin"/>
-
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:text="&#8942;"
+                android:textAppearance="?android:textAppearanceLarge" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
