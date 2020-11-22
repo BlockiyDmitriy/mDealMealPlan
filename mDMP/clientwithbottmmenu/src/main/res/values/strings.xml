@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Diary</string>
+    <string-array name="dropDownLifestyle">
+        <item>Минимальный уровень активность</item>
+        <item>Средний уровень активности</item>
+        <item>Максимальный уровень активности</item>
+    </string-array>
+</resources>

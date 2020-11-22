@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_diary"
+        android:icon="@drawable/icon_nav_bottom_diary"
+        android:title="Diary" />
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/icon_nav_bottom_profile"
+        android:title="Profile" />
+    <item
+        android:id="@+id/action_calendar"
+        android:icon="@drawable/icon_nav_bottom_calendar"
+        android:title="Calendar" />
+</menu>
