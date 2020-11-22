@@ -72,15 +72,10 @@ public class DiaryFragment extends Fragment {
             }
             case R.id.add: {
                 ((MainActivity) getActivity()).onNavigationItemSelected(2);
-                mName = mTempSaveData.getName();
-                mDescription = mTempSaveData.getDescription();
-                mProtein = mTempSaveData.getProtein();
-                mFat = mTempSaveData.getFat();
-                mCarbohydrates = mTempSaveData.getCarbohydrates();
                 products.add(new DiaryProduct(mTempSaveData.getName(), mTempSaveData.getDescription(), mTempSaveData.getProtein(), mTempSaveData.getFat(), mTempSaveData.getCarbohydrates()));
-                i++;
                 mAdapter = new DataAdapterRecyclerView(getContext(), products);
                 mRecyclerView.setAdapter(mAdapter);
+                i++;
                 break;
             }
         }

@@ -19,9 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryAddItem extends AppCompatActivity {
-    private DiaryProduct mDiaryProduct;
-    private TempSaveData mTempSaveData;
-    private List<DiaryProduct> products;
+      private TempSaveData mTempSaveData;
 
     private String mName;
     private String mDescription;
@@ -49,8 +47,6 @@ public class DiaryAddItem extends AppCompatActivity {
         mAddItemProtein = (EditText) findViewById(R.id.addItemProtein);
         mAddItemFat = (EditText) findViewById(R.id.addItemFat);
         mAddItemCarbohydrates = (EditText) findViewById(R.id.addItemCarbohydrates);
-
-        products = new ArrayList<>();
     }
 
     @Override
@@ -84,7 +80,6 @@ public class DiaryAddItem extends AppCompatActivity {
         mFat = Integer.parseInt(mAddItemFat.getText().toString());
         mCarbohydrates = Integer.parseInt(mAddItemCarbohydrates.getText().toString());
 
-//        products.add(new DiaryProduct(mName,mDescription,mProtein,mFat,mCarbohydrates));
         mTempSaveData = new TempSaveData(mName, mDescription, mProtein, mFat, mCarbohydrates);
 
     }
