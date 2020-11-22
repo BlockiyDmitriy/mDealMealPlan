@@ -7,12 +7,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryFragment extends Fragment {
-
 //TODO:
 //    http://developer.alexanderklimov.ru/android/views/cardview.php
 //    создание cardView или recyclerView
@@ -36,6 +33,14 @@ public class DiaryFragment extends Fragment {
     private DataAdapterRecyclerView mAdapter;
     private DiaryViewModel mDiaryViewModel;
     private List<DiaryProduct> products;
+    private TempSaveData mTempSaveData = new TempSaveData();
+
+    private String mName;
+    private String mDescription;
+    private int mProtein;
+    private int mFat;
+    private int mCarbohydrates;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,29 +53,34 @@ public class DiaryFragment extends Fragment {
 
         products = new ArrayList<>();
 
-        //Generate sample data
-        for (int i = 0; i < 10; i++) {
-            products.add(new DiaryProduct("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i + 1), 10, 50, 20));
-        }
-
-        mAdapter = new DataAdapterRecyclerView(getContext(), products);
-        mRecyclerView.setAdapter(mAdapter);
-
         setHasOptionsMenu(true);
 
         return root;
     }
 
-    //http://developer.alexanderklimov.ru/android/theory/fragment-replace.php
-    // обработчик нажитий на меню
+    //    TODO:
+//     http://developer.alexanderklimov.ru/android/theory/fragment-replace.php
+//     обработчик нажитий на меню
+    int i = 0;
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.add: {
-                break;
-            }
             case R.id.statistic: {
                 ((MainActivity) getActivity()).onNavigationItemSelected(1);
+                break;
+            }
+            case R.id.add: {
+                ((MainActivity) getActivity()).onNavigationItemSelected(2);
+                mName = mTempSaveData.getName();
+                mDescription = mTempSaveData.getDescription();
+                mProtein = mTempSaveData.getProtein();
+                mFat = mTempSaveData.getFat();
+                mCarbohydrates = mTempSaveData.getCarbohydrates();
+                products.add(new DiaryProduct(mTempSaveData.getName(), mTempSaveData.getDescription(), mTempSaveData.getProtein(), mTempSaveData.getFat(), mTempSaveData.getCarbohydrates()));
+                i++;
+                mAdapter = new DataAdapterRecyclerView(getContext(), products);
+                mRecyclerView.setAdapter(mAdapter);
                 break;
             }
         }

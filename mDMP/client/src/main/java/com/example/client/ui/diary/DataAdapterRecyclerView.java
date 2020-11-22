@@ -43,7 +43,7 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
     //  Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final @NonNull ViewHolder holder,final int position) {
-        DiaryProduct product = products.get(position);
+        final DiaryProduct product = products.get(position);
         holder.nameView.setText(product.getName());
         holder.descriptionView.setText(product.getDescription());
         holder.proteinView.setText(String.format("Protein: %s", String.valueOf(product.getProtein())));
@@ -53,7 +53,6 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
             @Override
             public void onClick(View v) {
                 //Display option menu
-
                 PopupMenu popupMenu = new PopupMenu(mContext, holder.nameView);
                 popupMenu.inflate(R.menu.option_menu);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -61,11 +60,16 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
                     public boolean onMenuItemClick(MenuItem item) {
 
                         switch (item.getItemId()) {
-                            case R.id.mnu_item_delete:
+                            case R.id.mnu_item_delete: {
                                 products.remove(position);
                                 notifyDataSetChanged();
-                                Toast.makeText(mContext, "Deleted", Toast.LENGTH_LONG).show();
+                                Toast.makeText(mContext, "Deleted", Toast.LENGTH_SHORT).show();
                                 break;
+                            }
+                            case R.id.mnu_item_edit:{
+                                Toast.makeText(mContext, "Edit", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
                             default:
                                 break;
                         }

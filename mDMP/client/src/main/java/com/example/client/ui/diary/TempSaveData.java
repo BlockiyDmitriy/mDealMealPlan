@@ -1,16 +1,13 @@
 package com.example.client.ui.diary;
 
-import java.io.Serializable;
-
-public class DiaryProduct  {
+public class TempSaveData {
     private String name;
     private String description;
     private int protein;
     private int fat;
     private int carbohydrates;
 
-    public DiaryProduct(String name, String description, int protein, int fat, int carbohydrates) {
-
+    public TempSaveData(String name, String description, int protein, int fat, int carbohydrates) {
         this.name = name;
         this.description = description;
         this.protein = protein;
@@ -18,8 +15,11 @@ public class DiaryProduct  {
         this.carbohydrates = carbohydrates;
     }
 
+    public TempSaveData() {
+    }
+
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {

@@ -11,6 +11,7 @@ using Service.Models;
 
 namespace Service.Controllers
 {
+    
     // https://metanit.com/sharp/aspnet5/12.3.php
     public class HomeController : Controller
     {
@@ -19,6 +20,7 @@ namespace Service.Controllers
         {
             _db = context;
         }
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return new JsonResult(await _db.CategoryModel.ToListAsync());
@@ -27,6 +29,7 @@ namespace Service.Controllers
         /// Получение всех категорий
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<IActionResult> GetCategory()
         {
             return new JsonResult(await _db.CategoryModel.ToListAsync());
@@ -74,7 +77,7 @@ namespace Service.Controllers
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(CategoryModel category)
+        public async Task<IActionResult> Edit([FromBody] CategoryModel category)
         {
             _db.CategoryModel.Update(category);
             await _db.SaveChangesAsync();

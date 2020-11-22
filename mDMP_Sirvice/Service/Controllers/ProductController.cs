@@ -26,7 +26,7 @@ namespace Service.Controllers
         /// <returns></returns>
         public async Task<IActionResult> GetProduct()
         {
-            return View(await _db.ProductModel.ToListAsync());
+            return new JsonResult(await _db.ProductModel.ToListAsync());
         }
         /// <summary>
         /// Добавление прдукта
