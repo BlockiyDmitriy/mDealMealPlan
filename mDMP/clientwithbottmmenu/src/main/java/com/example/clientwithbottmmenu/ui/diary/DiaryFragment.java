@@ -7,9 +7,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +24,7 @@ import com.example.clientwithbottmmenu.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiaryFragment extends Fragment {
+public class DiaryFragment extends Fragment implements View.OnClickListener {
 //TODO:
 //    http://developer.alexanderklimov.ru/android/views/cardview.php
 //    создание cardView или recyclerView
@@ -29,11 +32,13 @@ public class DiaryFragment extends Fragment {
 //    https://metanit.com/java/android/5.11.php
 //    https://www.fandroid.info/android-uchebnik-sozdanie-recyclerview-cardview-i-menyu-optsij-dlya-elementa-recyclerview/ Переделать на это
 
+    private DiaryProduct diaryProduct;
+    private DiaryAddItemFragment diaryAddItemFragment;
+
     private RecyclerView mRecyclerView;
     private DataAdapterRecyclerView mAdapter;
     private DiaryViewModel mDiaryViewModel;
     private List<DiaryProduct> products;
-    private TempSaveData mTempSaveData = new TempSaveData();
 
     private String mName;
     private String mDescription;
@@ -41,6 +46,8 @@ public class DiaryFragment extends Fragment {
     private int mFat;
     private int mCarbohydrates;
 
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -57,12 +64,10 @@ public class DiaryFragment extends Fragment {
 
         return root;
     }
-
+    public FragmentTransaction ft;
     //    TODO:
 //     http://developer.alexanderklimov.ru/android/theory/fragment-replace.php
 //     обработчик нажитий на меню
-    int i = 0;
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -71,18 +76,36 @@ public class DiaryFragment extends Fragment {
                 break;
             }
             case R.id.add: {
-                ((MainActivity) getActivity()).onNavigationItemSelected(2);
-                products.add(new DiaryProduct(mTempSaveData.getName(), mTempSaveData.getDescription(), mTempSaveData.getProtein(), mTempSaveData.getFat(), mTempSaveData.getCarbohydrates()));
+                diaryAddItemFragment = new DiaryAddItemFragment();
+
+                fragmentManager = getFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, diaryAddItemFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+//                Bundle bundle = this.getArguments();
+//                mName = bundle.getString("name", " ");
+//                mDescription = bundle.getString("description", " ");
+//                mProtein = bundle.getInt("protein", 0);
+//                mFat = bundle.getInt("fat", 0);
+//                mCarbohydrates = bundle.getInt("carbohydrates", 0);
+
+                products.add(new DiaryProduct(mName, mDescription, mProtein, mFat, mCarbohydrates));
                 mAdapter = new DataAdapterRecyclerView(getContext(), products);
                 mRecyclerView.setAdapter(mAdapter);
-                i++;
                 break;
             }
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
     // Вызов меню
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.diary, menu);

@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.clientwithbottmmenu.ui.calendar.CalendarFragment;
-import com.example.clientwithbottmmenu.ui.diary.DiaryAddItem;
 import com.example.clientwithbottmmenu.ui.diary.DiaryFragment;
 import com.example.clientwithbottmmenu.ui.profile.ProfileFragment;
 import com.example.clientwithbottmmenu.ui.statistic.StatisticActivity;
@@ -97,10 +96,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void onNavigationItemSelected(int i) {
         if (i == 1) {
             Intent intent = new Intent(this, StatisticActivity.class);
-            startActivity(intent);
-        }
-        if (i == 2) {
-            Intent intent = new Intent(this, DiaryAddItem.class);
             startActivity(intent);
         }
     }
