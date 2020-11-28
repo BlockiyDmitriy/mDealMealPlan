@@ -1,9 +1,9 @@
 package com.example.clientwithbottmmenu.ui.diary;
 
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,18 +19,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.clientwithbottmmenu.MainActivity;
 import com.example.clientwithbottmmenu.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DiaryAddItemFragment extends Fragment {
 
-    private DiaryAddItemViewModel mViewModel;
-    private DiaryFragment diaryFragment;
+    private OnFragmentInteractionListener mListener;
 
-    private List<DiaryProduct> products;
+    private DiaryAddItemViewModel mViewModel;
+
+    private List<DiaryProduct> mProducts;
 
     private String mName;
     private String mDescription;
@@ -44,6 +45,10 @@ public class DiaryAddItemFragment extends Fragment {
     private EditText mAddItemFat;
     private EditText mAddItemCarbohydrates;
 
+    public interface OnFragmentInteractionListener {
+
+        void onFragmentInteraction(List<DiaryProduct> link);
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -55,10 +60,26 @@ public class DiaryAddItemFragment extends Fragment {
         mAddItemFat = (EditText) v.findViewById(R.id.addItemFat);
         mAddItemCarbohydrates = (EditText) v.findViewById(R.id.addItemCarbohydrates);
 
-        products = new ArrayList<>();
+        mProducts = new ArrayList<>();
 
         setHasOptionsMenu(true);
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            mListener = (OnFragmentInteractionListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " должен реализовывать интерфейс OnFragmentInteractionListener");
+        }
+    }
+
+    public void updateDetail() {
+        // Посылаем данные Activity
+        mListener.onFragmentInteraction(mProducts);
     }
 
     private boolean getParam() {
@@ -74,22 +95,11 @@ public class DiaryAddItemFragment extends Fragment {
             mProtein = Integer.parseInt(mTempProtein);
             mFat = Integer.parseInt(mTempFat);
             mCarbohydrates = Integer.parseInt(mTempCarbohydrates);
+            mProducts.add(new DiaryProduct(mName,mDescription,mProtein,mFat,mCarbohydrates));
             return true;
         } else {
             return false;
         }
-        //products.add(new DiaryProduct(mName,mDescription,mProtein,mFat,mCarbohydrates));
-    }
-
-    private void setBundleArg() {
-        diaryFragment = new DiaryFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("name", mName);
-        bundle.putString("description", mDescription);
-        bundle.putInt("protein", mProtein);
-        bundle.putInt("fat", mFat);
-        bundle.putInt("carbohydrates", mCarbohydrates);
-        diaryFragment.setArguments(bundle);
     }
 
     @Override
@@ -104,11 +114,13 @@ public class DiaryAddItemFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.addItemAccept: {
                 boolean temp = getParam();
-                if (temp == true) {
-                    setBundleArg();
+                if (temp) {
+
+                    updateDetail();
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack();
+
                 } else {
                     Toast toast = Toast.makeText(getContext(), "Вы не ввели данные", Toast.LENGTH_SHORT);
                     toast.show();

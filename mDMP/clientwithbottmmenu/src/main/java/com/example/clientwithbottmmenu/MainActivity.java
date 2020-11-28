@@ -11,12 +11,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.clientwithbottmmenu.ui.calendar.CalendarFragment;
+import com.example.clientwithbottmmenu.ui.diary.DiaryAddItemFragment;
 import com.example.clientwithbottmmenu.ui.diary.DiaryFragment;
+import com.example.clientwithbottmmenu.ui.diary.DiaryProduct;
 import com.example.clientwithbottmmenu.ui.profile.ProfileFragment;
 import com.example.clientwithbottmmenu.ui.statistic.StatisticActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, DiaryAddItemFragment.OnFragmentInteractionListener {
 
     FrameLayout container;
     FragmentManager myFragmentManager;
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             FragmentTransaction fragmentTransaction = myFragmentManager
                     .beginTransaction();
 
-            fragmentTransaction.add(R.id.container, diaryFragment);
+            fragmentTransaction.add(R.id.container, diaryFragment, "DIARY_FRAGMENT");
             fragmentTransaction.commit();
         }
 
@@ -90,9 +94,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
+    @Override
+    public void onFragmentInteraction(List<DiaryProduct> link) {
+        DiaryFragment fragment = (DiaryFragment) getSupportFragmentManager()
+                .findFragmentByTag("DIARY_FRAGMENT");
+        if (fragment != null ) {
+            fragment.setText(link);
+        }
+    }
     //TODO:
-//    https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/560-urok-27-navigation-navigationui.html
-//    https://habr.com/ru/post/416025/
+    //    https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/560-urok-27-navigation-navigationui.html
+    //    https://habr.com/ru/post/416025/
+
     public void onNavigationItemSelected(int i) {
         if (i == 1) {
             Intent intent = new Intent(this, StatisticActivity.class);

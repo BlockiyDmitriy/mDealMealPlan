@@ -64,8 +64,8 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
 
         return root;
     }
-    public FragmentTransaction ft;
-    //    TODO:
+
+//TODO:
 //     http://developer.alexanderklimov.ru/android/theory/fragment-replace.php
 //     обработчик нажитий на меню
     @Override
@@ -77,27 +77,20 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
             }
             case R.id.add: {
                 diaryAddItemFragment = new DiaryAddItemFragment();
-
                 fragmentManager = getFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container, diaryAddItemFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
-//                Bundle bundle = this.getArguments();
-//                mName = bundle.getString("name", " ");
-//                mDescription = bundle.getString("description", " ");
-//                mProtein = bundle.getInt("protein", 0);
-//                mFat = bundle.getInt("fat", 0);
-//                mCarbohydrates = bundle.getInt("carbohydrates", 0);
-
-                products.add(new DiaryProduct(mName, mDescription, mProtein, mFat, mCarbohydrates));
-                mAdapter = new DataAdapterRecyclerView(getContext(), products);
-                mRecyclerView.setAdapter(mAdapter);
                 break;
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+    // обновление текстового поля
+    public void setText(List<DiaryProduct> item) {
+        mAdapter = new DataAdapterRecyclerView(getContext(), item);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
