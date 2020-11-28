@@ -32,19 +32,12 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
 //    https://metanit.com/java/android/5.11.php
 //    https://www.fandroid.info/android-uchebnik-sozdanie-recyclerview-cardview-i-menyu-optsij-dlya-elementa-recyclerview/ Переделать на это
 
-    private DiaryProduct diaryProduct;
     private DiaryAddItemFragment diaryAddItemFragment;
 
     private RecyclerView mRecyclerView;
     private DataAdapterRecyclerView mAdapter;
     private DiaryViewModel mDiaryViewModel;
-    private List<DiaryProduct> products;
-
-    private String mName;
-    private String mDescription;
-    private int mProtein;
-    private int mFat;
-    private int mCarbohydrates;
+    private List<DiaryProduct> products = new ArrayList<>();;
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -58,7 +51,9 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        products = new ArrayList<>();
+//        TODO: Проверить создавался ли раньше этот фрагмент и если создавался, то добавить адаптер
+        mAdapter = new DataAdapterRecyclerView(getContext(), products);
+        mRecyclerView.setAdapter(mAdapter);
 
         setHasOptionsMenu(true);
 
@@ -89,8 +84,7 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
     }
     // обновление текстового поля
     public void setText(List<DiaryProduct> item) {
-        mAdapter = new DataAdapterRecyclerView(getContext(), item);
-        mRecyclerView.setAdapter(mAdapter);
+        products = item;
     }
 
     @Override
