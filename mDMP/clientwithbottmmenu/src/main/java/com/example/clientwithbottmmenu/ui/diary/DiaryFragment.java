@@ -7,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.clientwithbottmmenu.MainActivity;
 import com.example.clientwithbottmmenu.R;
+import com.example.clientwithbottmmenu.ui.statistic.StatisticFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,15 +31,16 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
 //    https://metanit.com/java/android/5.11.php
 //    https://www.fandroid.info/android-uchebnik-sozdanie-recyclerview-cardview-i-menyu-optsij-dlya-elementa-recyclerview/ Переделать на это
 
-    private DiaryAddItemFragment diaryAddItemFragment;
+    private DiaryAddItemFragment mDiaryAddItemFragment;
+    private StatisticFragment mStatisticFragment;
 
     private RecyclerView mRecyclerView;
     private DataAdapterRecyclerView mAdapter;
     private DiaryViewModel mDiaryViewModel;
     private List<DiaryProduct> products = new ArrayList<>();;
 
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
+    private FragmentManager mFragmentManager;
+    private FragmentTransaction mFragmentTransaction;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -67,16 +67,21 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.statistic: {
-                ((MainActivity) getActivity()).onNavigationItemSelected(1);
+                mStatisticFragment = new StatisticFragment();
+                mFragmentManager = getFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container, mStatisticFragment);
+                mFragmentTransaction.addToBackStack(null);
+                mFragmentTransaction.commit();
                 break;
             }
             case R.id.add: {
-                diaryAddItemFragment = new DiaryAddItemFragment();
-                fragmentManager = getFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, diaryAddItemFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                mDiaryAddItemFragment = new DiaryAddItemFragment();
+                mFragmentManager = getFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container, mDiaryAddItemFragment);
+                mFragmentTransaction.addToBackStack(null);
+                mFragmentTransaction.commit();
                 break;
             }
         }

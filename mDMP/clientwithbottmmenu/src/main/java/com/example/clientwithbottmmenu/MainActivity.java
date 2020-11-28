@@ -15,7 +15,6 @@ import com.example.clientwithbottmmenu.ui.diary.DiaryAddItemFragment;
 import com.example.clientwithbottmmenu.ui.diary.DiaryFragment;
 import com.example.clientwithbottmmenu.ui.diary.DiaryProduct;
 import com.example.clientwithbottmmenu.ui.profile.ProfileFragment;
-import com.example.clientwithbottmmenu.ui.statistic.StatisticActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
