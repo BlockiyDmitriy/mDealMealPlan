@@ -1,40 +1,20 @@
 package com.example.clientwithbottmmenu.ui.diary;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class DiaryProduct {
-    @PrimaryKey
-    @ColumnInfo(name = "id")
-    private long id;
-    @ColumnInfo(name = "name")
+
     private String name;
-    @ColumnInfo(name = "description")
     private String description;
-    @ColumnInfo(name = "protein")
     private float protein;
-    @ColumnInfo(name = "fat")
     private float fat;
-    @ColumnInfo(name = "carbohydrates")
     private float carbohydrates;
 
-    public DiaryProduct(long id, String name, String description, float protein, float fat, float carbohydrates) {
-        this.id = id;
+    public DiaryProduct(String name, String description, float protein, float fat, float carbohydrates) {
+
         this.name = name;
         this.description = description;
         this.protein = protein;
         this.fat = fat;
         this.carbohydrates = carbohydrates;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
