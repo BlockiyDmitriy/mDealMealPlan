@@ -1,15 +1,7 @@
 package com.example.clientwithbottmmenu.ui.diary;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,10 +11,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.clientwithbottmmenu.R;
+import com.example.clientwithbottmmenu.dbSave.App;
+import com.example.clientwithbottmmenu.dbSave.AppDatabase;
+import com.example.clientwithbottmmenu.dbSave.Product;
+import com.example.clientwithbottmmenu.dbSave.ProductDao;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DiaryAddItemFragment extends Fragment {
@@ -35,9 +36,9 @@ public class DiaryAddItemFragment extends Fragment {
 
     private String mName;
     private String mDescription;
-    private int mProtein;
-    private int mFat;
-    private int mCarbohydrates;
+    private float mProtein;
+    private float mFat;
+    private float mCarbohydrates;
 
     private EditText mAddItemName;
     private EditText mAddItemDescription;
@@ -45,22 +46,30 @@ public class DiaryAddItemFragment extends Fragment {
     private EditText mAddItemFat;
     private EditText mAddItemCarbohydrates;
 
+    private String mTempProtein;
+    private String mTempFat;
+    private String mTempCarbohydrates;
+
+    ProductDao productDao;
+
     public interface OnFragmentInteractionListener {
 
         void onFragmentInteraction(List<DiaryProduct> link);
     }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.diary_add_item_fragment, container, false);
+
+        productDao = App.getInstance().getDatabase().productDao();
+        mProducts = new ArrayList<>();
 
         mAddItemName = (EditText) v.findViewById(R.id.addItemName);
         mAddItemDescription = (EditText) v.findViewById(R.id.addItemDescription);
         mAddItemProtein = (EditText) v.findViewById(R.id.addItemProtein);
         mAddItemFat = (EditText) v.findViewById(R.id.addItemFat);
         mAddItemCarbohydrates = (EditText) v.findViewById(R.id.addItemCarbohydrates);
-
-        mProducts = new ArrayList<>();
 
         setHasOptionsMenu(true);
         return v;
@@ -83,23 +92,24 @@ public class DiaryAddItemFragment extends Fragment {
     }
 
     private boolean getParam() {
-        String mTempProtein;
-        String mTempFat;
-        String mTempCarbohydrates;
         mName = mAddItemName.getText().toString();
         mDescription = mAddItemDescription.getText().toString();
         mTempProtein = mAddItemProtein.getText().toString();
         mTempFat = mAddItemFat.getText().toString();
         mTempCarbohydrates = mAddItemCarbohydrates.getText().toString();
         if (!mName.equals("") && !mTempProtein.equals("") && !mTempFat.equals("") && !mTempCarbohydrates.equals("")) {
-            mProtein = Integer.parseInt(mTempProtein);
-            mFat = Integer.parseInt(mTempFat);
-            mCarbohydrates = Integer.parseInt(mTempCarbohydrates);
-            mProducts.add(new DiaryProduct(mName,mDescription,mProtein,mFat,mCarbohydrates));
+            mProtein = Float.parseFloat(mTempProtein);
+            mFat = Float.parseFloat(mTempFat);
+            mCarbohydrates = Float.parseFloat(mTempCarbohydrates);
+            mProducts.add(new DiaryProduct(1, mName, mDescription, mProtein, mFat, mCarbohydrates));
             return true;
         } else {
             return false;
         }
+    }
+
+    private DiaryProduct createSaveList() {
+        return new DiaryProduct(1, mName, mDescription, mProtein, mFat, mCarbohydrates);
     }
 
     @Override
@@ -115,9 +125,10 @@ public class DiaryAddItemFragment extends Fragment {
             case R.id.addItemAccept: {
                 boolean temp = getParam();
                 if (temp) {
-
                     updateDetail();
 
+//                  Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
+                    productDao.insert(createSaveList());
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack();
 
@@ -130,6 +141,7 @@ public class DiaryAddItemFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {

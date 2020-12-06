@@ -105,10 +105,4 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     //    https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/560-urok-27-navigation-navigationui.html
     //    https://habr.com/ru/post/416025/
 
-    public void onNavigationItemSelected(int i) {
-        if (i == 1) {
-            Intent intent = new Intent(this, StatisticActivity.class);
-            startActivity(intent);
-        }
-    }
 }

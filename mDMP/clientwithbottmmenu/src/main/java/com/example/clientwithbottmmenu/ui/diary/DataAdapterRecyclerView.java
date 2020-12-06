@@ -54,7 +54,7 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
             @Override
             public void onClick(View v) {
                 //Display option menu
-                PopupMenu popupMenu = new PopupMenu(mContext, holder.nameView);
+                PopupMenu popupMenu = new PopupMenu(mContext, holder.txtOptionDigit);
                 popupMenu.inflate(R.menu.option_menu);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -64,7 +64,6 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
                             case R.id.mnu_item_delete: {
                                 products.remove(position);
                                 notifyDataSetChanged();
-                                Toast.makeText(mContext, "Deleted", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                             case R.id.mnu_item_edit:{
