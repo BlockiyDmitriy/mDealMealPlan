@@ -1,6 +1,5 @@
 package com.example.clientwithbottmmenu.ui.diary;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -8,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,16 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.clientwithbottmmenu.R;
-import com.example.clientwithbottmmenu.dbSave.App;
-import com.example.clientwithbottmmenu.dbSave.AppDatabase;
-import com.example.clientwithbottmmenu.dbSave.FeedReaderDbHelper;
-import com.example.clientwithbottmmenu.dbSave.ProductDao;
 import com.example.clientwithbottmmenu.ui.statistic.StatisticFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class DiaryFragment extends Fragment implements View.OnClickListener {
 //TODO:
@@ -46,13 +38,9 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
     private DataAdapterRecyclerView mAdapter;
     private DiaryViewModel mDiaryViewModel;
     private List<DiaryProduct> products = new ArrayList<>();
-    ;
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
-
-    private ProductDao productDao;
-    private DiaryProduct diaryProduct;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

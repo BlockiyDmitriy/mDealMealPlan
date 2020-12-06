@@ -1,6 +1,5 @@
 package com.example.clientwithbottmmenu;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -19,7 +18,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, DiaryAddItemFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements
+        BottomNavigationView.OnNavigationItemSelectedListener,
+        DiaryAddItemFragment.OnFragmentInteractionListener {
 
     FrameLayout container;
     FragmentManager myFragmentManager;
@@ -74,14 +75,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragmentTransaction.replace(R.id.container, diaryFragment);
                 break;
             }
-            case R.id.action_profile:{
+            case R.id.action_profile: {
                 bundle = new Bundle();
                 profileFragment.setArguments(bundle);
 
                 fragmentTransaction.replace(R.id.container, profileFragment);
                 break;
             }
-            case R.id.action_calendar:{
+            case R.id.action_calendar: {
                 bundle = new Bundle();
                 calendarFragment.setArguments(bundle);
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void onFragmentInteraction(List<DiaryProduct> link) {
         DiaryFragment fragment = (DiaryFragment) getSupportFragmentManager()
                 .findFragmentByTag("DIARY_FRAGMENT");
-        if (fragment != null ) {
+        if (fragment != null) {
             fragment.setText(link);
         }
     }

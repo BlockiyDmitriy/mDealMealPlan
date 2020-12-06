@@ -18,10 +18,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.clientwithbottmmenu.R;
-import com.example.clientwithbottmmenu.dbSave.App;
-import com.example.clientwithbottmmenu.dbSave.AppDatabase;
-import com.example.clientwithbottmmenu.dbSave.Product;
-import com.example.clientwithbottmmenu.dbSave.ProductDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +46,6 @@ public class DiaryAddItemFragment extends Fragment {
     private String mTempFat;
     private String mTempCarbohydrates;
 
-    ProductDao productDao;
-
     public interface OnFragmentInteractionListener {
 
         void onFragmentInteraction(List<DiaryProduct> link);
@@ -62,14 +56,14 @@ public class DiaryAddItemFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.diary_add_item_fragment, container, false);
 
-        productDao = App.getInstance().getDatabase().productDao();
-        mProducts = new ArrayList<>();
 
         mAddItemName = (EditText) v.findViewById(R.id.addItemName);
         mAddItemDescription = (EditText) v.findViewById(R.id.addItemDescription);
         mAddItemProtein = (EditText) v.findViewById(R.id.addItemProtein);
         mAddItemFat = (EditText) v.findViewById(R.id.addItemFat);
         mAddItemCarbohydrates = (EditText) v.findViewById(R.id.addItemCarbohydrates);
+
+        mProducts = new ArrayList<>();
 
         setHasOptionsMenu(true);
         return v;
@@ -101,15 +95,11 @@ public class DiaryAddItemFragment extends Fragment {
             mProtein = Float.parseFloat(mTempProtein);
             mFat = Float.parseFloat(mTempFat);
             mCarbohydrates = Float.parseFloat(mTempCarbohydrates);
-            mProducts.add(new DiaryProduct(1, mName, mDescription, mProtein, mFat, mCarbohydrates));
+            mProducts.add(new DiaryProduct(mName, mDescription, mProtein, mFat, mCarbohydrates));
             return true;
         } else {
             return false;
         }
-    }
-
-    private DiaryProduct createSaveList() {
-        return new DiaryProduct(1, mName, mDescription, mProtein, mFat, mCarbohydrates);
     }
 
     @Override
@@ -127,8 +117,6 @@ public class DiaryAddItemFragment extends Fragment {
                 if (temp) {
                     updateDetail();
 
-//                  Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
-                    productDao.insert(createSaveList());
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack();
 
