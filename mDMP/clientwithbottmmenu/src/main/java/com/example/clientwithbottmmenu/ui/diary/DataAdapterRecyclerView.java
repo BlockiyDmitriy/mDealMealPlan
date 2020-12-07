@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.clientwithbottmmenu.R;
+import com.example.clientwithbottmmenu.dbSave.DBHelper;
 
 import java.util.List;
 
@@ -21,14 +22,18 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
     private Context mContext;
     private List<DiaryProduct> products;
 
+    private DBHelper dbHelper;
+
     public DataAdapterRecyclerView(Context mContext, List<DiaryProduct> products) {
         this.products = products;
         this.mContext = mContext;
+        dbHelper = new DBHelper(mContext);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        final public TextView nameView, descriptionView, proteinView, fatView, carbohydratesView, txtOptionDigit;
+        final public TextView nameView, descriptionView, proteinView, fatView,
+                carbohydratesView, txtOptionDigit;
 
         ViewHolder(View view) {
             super(view);
@@ -53,15 +58,15 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
         holder.txtOptionDigit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Display option menu
                 PopupMenu popupMenu = new PopupMenu(mContext, holder.txtOptionDigit);
                 popupMenu.inflate(R.menu.option_menu);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-
                         switch (item.getItemId()) {
                             case R.id.mnu_item_delete: {
+
+                                dbHelper.deleteProduct(position);
                                 products.remove(position);
                                 notifyDataSetChanged();
                                 break;
@@ -84,8 +89,10 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
     //  Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public DataAdapterRecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_diary_view, parent, false);
+    public DataAdapterRecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                                                 int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_diary_view,
+                parent, false);
         return new ViewHolder(view);
     }
 
