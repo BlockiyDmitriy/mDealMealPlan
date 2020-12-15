@@ -27,17 +27,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // TODO Auto-generated method stub
         db.execSQL(
                 "create table products " +
-                        "(id integer primary key, name text,carbohydrates text,description text," +
-                        " protein text,fat text)"
+                        "(id integer primary key, name text, carbohydrates text, description text, " +
+                        " protein text, fat text)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // TODO Auto-generated method stub
         db.execSQL("DROP TABLE IF EXISTS products");
         onCreate(db);
     }
@@ -94,7 +92,9 @@ public class DBHelper extends SQLiteOpenHelper {
         res.moveToFirst();
 
         while (res.isAfterLast() == false) {
-            DiaryProduct diaryProduct = new DiaryProduct((res.getString(res.getColumnIndex(CONTACTS_COLUMN_NAME))),
+            DiaryProduct diaryProduct = new DiaryProduct(
+                    (res.getInt(res.getColumnIndex(CONTACTS_COLUMN_ID))),
+                    (res.getString(res.getColumnIndex(CONTACTS_COLUMN_NAME))),
                     (res.getString(res.getColumnIndex(CONTACTS_COLUMN_DESCRIPTION))),
                     (res.getInt(res.getColumnIndex(CONTACTS_COLUMN_PROTEIN))),
                     (res.getInt(res.getColumnIndex(CONTACTS_COLUMN_FAT))),

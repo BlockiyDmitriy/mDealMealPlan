@@ -36,7 +36,6 @@ public class DiaryFragment extends Fragment{
 
     private RecyclerView mRecyclerView;
     private DataAdapterRecyclerView mAdapter;
-    private DiaryViewModel mDiaryViewModel;
     private List<DiaryProduct> products;
 
     private FragmentManager mFragmentManager;
@@ -46,7 +45,7 @@ public class DiaryFragment extends Fragment{
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mDiaryViewModel = ViewModelProviders.of(this).get(DiaryViewModel.class);
+        DiaryViewModel diaryViewModel = ViewModelProviders.of(this).get(DiaryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_diary, container, false);
 
         products = new ArrayList<>();

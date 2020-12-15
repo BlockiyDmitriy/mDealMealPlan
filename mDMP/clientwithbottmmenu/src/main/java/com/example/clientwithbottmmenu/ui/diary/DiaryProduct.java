@@ -2,19 +2,36 @@ package com.example.clientwithbottmmenu.ui.diary;
 
 public class DiaryProduct {
 
+    private int id;
     private String name;
     private String description;
     private float protein;
     private float fat;
     private float carbohydrates;
 
-    public DiaryProduct(String name, String description, float protein, float fat, float carbohydrates) {
-
+    public DiaryProduct(int id, String name, String description, float protein, float fat, float carbohydrates) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.protein = protein;
         this.fat = fat;
         this.carbohydrates = carbohydrates;
+    }
+
+    public DiaryProduct(String name, String description, float protein, float fat, float carbohydrates) {
+        this.name = name;
+        this.description = description;
+        this.protein = protein;
+        this.fat = fat;
+        this.carbohydrates = carbohydrates;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

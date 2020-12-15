@@ -48,7 +48,7 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
 
     //  Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(final @NonNull ViewHolder holder,final int position) {
+    public void onBindViewHolder(final @NonNull ViewHolder holder, final int position) {
         final DiaryProduct product = products.get(position);
         holder.nameView.setText(product.getName());
         holder.descriptionView.setText(product.getDescription());
@@ -65,18 +65,14 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.mnu_item_delete: {
-
-                                dbHelper.deleteProduct(position);
+                                dbHelper.deleteProduct(product.getId());
                                 products.remove(position);
                                 notifyDataSetChanged();
                                 break;
                             }
-                            case R.id.mnu_item_edit:{
-                                Toast.makeText(mContext, "Edit", Toast.LENGTH_SHORT).show();
+                            default: {
                                 break;
                             }
-                            default:
-                                break;
                         }
                         return false;
                     }
