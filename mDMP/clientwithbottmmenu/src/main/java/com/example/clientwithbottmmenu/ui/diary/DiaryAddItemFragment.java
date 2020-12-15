@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.clientwithbottmmenu.R;
+import com.example.clientwithbottmmenu.dbSave.DBHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class DiaryAddItemFragment extends Fragment {
     private String mTempProtein;
     private String mTempFat;
     private String mTempCarbohydrates;
+
+    private DBHelper mDbHelper;
 
     public interface OnFragmentInteractionListener {
 
@@ -80,7 +83,48 @@ public class DiaryAddItemFragment extends Fragment {
         }
     }
 
-    public void updateDetail() {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(DiaryAddItemViewModel.class);
+        // TODO: Use the ViewModel
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.addItemAccept: {
+                boolean temp = getParam();
+                if (temp) {
+                    updateDetail();
+                    setDataToDb();
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack();
+
+                } else {
+                    Toast toast = Toast.makeText(getContext(), "Вы не ввели данные", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.diary_add_item, menu);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mDbHelper.close();
+    }
+
+    private void updateDetail() {
         // Посылаем данные Activity
         mListener.onFragmentInteraction(mProducts);
     }
@@ -101,38 +145,8 @@ public class DiaryAddItemFragment extends Fragment {
             return false;
         }
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(DiaryAddItemViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.addItemAccept: {
-                boolean temp = getParam();
-                if (temp) {
-                    updateDetail();
-
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack();
-
-                } else {
-                    Toast toast = Toast.makeText(getContext(), "Вы не ввели данные", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                break;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.diary_add_item, menu);
+    private void setDataToDb(){
+        mDbHelper = new DBHelper(getContext());
+        mDbHelper.insertProduct(mName,mDescription,mTempProtein,mTempFat,mTempCarbohydrates);
     }
 }

@@ -4,7 +4,4 @@
     <item
         android:id="@+id/mnu_item_delete"
         android:title="Delete" />
-    <item
-        android:id="@+id/mnu_item_edit"
-        android:title="Edit" />
 </menu>

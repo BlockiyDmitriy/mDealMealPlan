@@ -16,14 +16,14 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.clientwithbottmmenu.R;
+import com.example.clientwithbottmmenu.dbSave.DBHelper;
 import com.example.clientwithbottmmenu.ui.statistic.StatisticFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiaryFragment extends Fragment implements View.OnClickListener {
+public class DiaryFragment extends Fragment{
 //TODO:
 //    http://developer.alexanderklimov.ru/android/views/cardview.php
 //    создание cardView или recyclerView
@@ -36,17 +36,20 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView mRecyclerView;
     private DataAdapterRecyclerView mAdapter;
-    private DiaryViewModel mDiaryViewModel;
-    private List<DiaryProduct> products = new ArrayList<>();
+    private List<DiaryProduct> products;
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
 
+    private DBHelper mDbHelper;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mDiaryViewModel = ViewModelProviders.of(this).get(DiaryViewModel.class);
+        DiaryViewModel diaryViewModel = ViewModelProviders.of(this).get(DiaryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_diary, container, false);
 
+        products = new ArrayList<>();
+        products = getDataFromDb();
 
         mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler_view_diary);
         mRecyclerView.setHasFixedSize(true);
@@ -99,14 +102,15 @@ public class DiaryFragment extends Fragment implements View.OnClickListener {
     // https://www.tutorialspoint.com/android/android_sqlite_database.htm
     // https://habr.com/ru/post/336196/
 
-    @Override
-    public void onClick(View v) {
-
-    }
     // Вызов меню
-
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.diary, menu);
+    }
+
+    private List<DiaryProduct> getDataFromDb(){
+        mDbHelper = new DBHelper(getContext());
+        List<DiaryProduct> strings = new ArrayList<>();
+        return strings = mDbHelper.getAllProducts();
     }
 }
