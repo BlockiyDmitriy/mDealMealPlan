@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.clientwithbottmmenu.ui.calendar.CalendarFragment;
 import com.example.clientwithbottmmenu.ui.diary.DiaryAddItemFragment;
 import com.example.clientwithbottmmenu.ui.diary.DiaryFragment;
-import com.example.clientwithbottmmenu.ui.diary.DiaryProduct;
+import com.example.clientwithbottmmenu.ui.diary.model.DiaryProduct;
 import com.example.clientwithbottmmenu.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

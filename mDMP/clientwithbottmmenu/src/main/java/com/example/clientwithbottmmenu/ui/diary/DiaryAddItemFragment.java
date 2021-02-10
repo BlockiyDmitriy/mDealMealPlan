@@ -18,7 +18,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.clientwithbottmmenu.R;
-import com.example.clientwithbottmmenu.dbSave.DBHelper;
+import com.example.clientwithbottmmenu.dbSave.dbProduct.DBHelperProduct;
+import com.example.clientwithbottmmenu.ui.diary.model.DiaryProduct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,6 @@ import java.util.List;
 public class DiaryAddItemFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-
-    private DiaryAddItemViewModel mViewModel;
 
     private List<DiaryProduct> mProducts;
 
@@ -47,7 +46,7 @@ public class DiaryAddItemFragment extends Fragment {
     private String mTempFat;
     private String mTempCarbohydrates;
 
-    private DBHelper mDbHelper;
+    private DBHelperProduct mDbHelperProduct;
 
     public interface OnFragmentInteractionListener {
 
@@ -58,7 +57,6 @@ public class DiaryAddItemFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.diary_add_item_fragment, container, false);
-
 
         mAddItemName = (EditText) v.findViewById(R.id.addItemName);
         mAddItemDescription = (EditText) v.findViewById(R.id.addItemDescription);
@@ -86,7 +84,7 @@ public class DiaryAddItemFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(DiaryAddItemViewModel.class);
+        DiaryAddItemViewModel mViewModel = ViewModelProviders.of(this).get(DiaryAddItemViewModel.class);
         // TODO: Use the ViewModel
     }
 
@@ -121,7 +119,7 @@ public class DiaryAddItemFragment extends Fragment {
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        mDbHelper.close();
+        mDbHelperProduct.close();
     }
 
     private void updateDetail() {
@@ -146,7 +144,7 @@ public class DiaryAddItemFragment extends Fragment {
         }
     }
     private void setDataToDb(){
-        mDbHelper = new DBHelper(getContext());
-        mDbHelper.insertProduct(mName,mDescription,mTempProtein,mTempFat,mTempCarbohydrates);
+        mDbHelperProduct = new DBHelperProduct(getContext());
+        mDbHelperProduct.insertProduct(mName,mDescription,mTempProtein,mTempFat,mTempCarbohydrates);
     }
 }

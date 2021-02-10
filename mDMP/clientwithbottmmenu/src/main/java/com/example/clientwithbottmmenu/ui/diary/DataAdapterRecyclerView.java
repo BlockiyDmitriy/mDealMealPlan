@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.clientwithbottmmenu.R;
-import com.example.clientwithbottmmenu.dbSave.DBHelper;
+import com.example.clientwithbottmmenu.dbSave.dbProduct.DBHelperProduct;
+import com.example.clientwithbottmmenu.ui.diary.model.DiaryProduct;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
     private Context mContext;
     private List<DiaryProduct> products;
 
-    private DBHelper dbHelper;
+    private DBHelperProduct dbHelperProduct;
 
     public DataAdapterRecyclerView(Context mContext, List<DiaryProduct> products) {
         this.products = products;
         this.mContext = mContext;
-        dbHelper = new DBHelper(mContext);
+        dbHelperProduct = new DBHelperProduct(mContext);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,7 +65,7 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.mnu_item_delete: {
-                                dbHelper.deleteProduct(product.getId());
+                                dbHelperProduct.deleteProduct(product.getId());
                                 products.remove(position);
                                 notifyDataSetChanged();
                                 break;
