@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97bbd9d5-b01c-4500-8875-7528ae9ccbc0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/dbSave/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/dbSave/dbProduct/DBHelperProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DataAdapterRecyclerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DataAdapterRecyclerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DiaryAddItemFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DiaryAddItemFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DiaryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DiaryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/DiaryProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mDMP/clientwithbottmmenu/src/main/java/com/example/clientwithbottmmenu/ui/diary/model/DiaryProduct.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1oBsfPlcs9B26LI4eqhh7gnWxK9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97bbd9d5-b01c-4500-8875-7528ae9ccbc0" name="Default Changelist" comment="" />
+      <created>1612771420359</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612771420359</updated>
+    </task>
+    <servers />
+  </component>
+</project>
