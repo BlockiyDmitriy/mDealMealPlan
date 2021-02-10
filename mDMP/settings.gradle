@@ -1,3 +1,2 @@
 include ':clientwithbottmmenu'
-include ':client'
 rootProject.name = "mDMP"

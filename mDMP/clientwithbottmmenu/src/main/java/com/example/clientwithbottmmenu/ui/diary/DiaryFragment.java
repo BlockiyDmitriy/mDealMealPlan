@@ -17,7 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clientwithbottmmenu.R;
-import com.example.clientwithbottmmenu.dbSave.DBHelper;
+import com.example.clientwithbottmmenu.dbSave.dbProduct.DBHelperProduct;
+import com.example.clientwithbottmmenu.ui.diary.model.DiaryProduct;
 import com.example.clientwithbottmmenu.ui.statistic.StatisticFragment;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class DiaryFragment extends Fragment{
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
 
-    private DBHelper mDbHelper;
+    private DBHelperProduct mDbHelperProduct;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -109,8 +110,8 @@ public class DiaryFragment extends Fragment{
     }
 
     private List<DiaryProduct> getDataFromDb(){
-        mDbHelper = new DBHelper(getContext());
+        mDbHelperProduct = new DBHelperProduct(getContext());
         List<DiaryProduct> strings = new ArrayList<>();
-        return strings = mDbHelper.getAllProducts();
+        return strings = mDbHelperProduct.getAllProducts();
     }
 }
