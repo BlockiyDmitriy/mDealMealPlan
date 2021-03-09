@@ -1,2 +1,3 @@
+include ':TestApp'
 include ':app'
 rootProject.name = "Stepometr"

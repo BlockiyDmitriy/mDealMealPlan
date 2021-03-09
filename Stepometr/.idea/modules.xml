@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Stepometr.iml" filepath="$PROJECT_DIR$/.idea/modules/Stepometr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TestApp/Stepometr.TestApp.iml" filepath="$PROJECT_DIR$/.idea/modules/TestApp/Stepometr.TestApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Stepometr.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Stepometr.app.iml" />
     </modules>
   </component>
