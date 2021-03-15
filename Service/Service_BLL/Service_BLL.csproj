@@ -46,5 +46,15 @@
   <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Service_DAL\Service_DAL.csproj">
+      <Project>{a6e28968-58dc-404e-95c6-5ce75705ac4a}</Project>
+      <Name>Service_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service_DTO\Service_DTO.csproj">
+      <Project>{13ecd592-0747-4234-975b-35543c9656ff}</Project>
+      <Name>Service_DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
