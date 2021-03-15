@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/bottom_nav_bar_history"
+        android:title="History" />
+
+    <item
+        android:id="@+id/navigation_stepometr"
+        android:icon="@drawable/bottom_nav_bar_step"
+        android:title="Stepometr" />
+
+    <item
+        android:id="@+id/navigation_friends"
+        android:icon="@drawable/bottom_nav_bar_friends"
+        android:title="Friends" />
+
+</menu>

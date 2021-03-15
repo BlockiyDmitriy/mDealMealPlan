@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Stepometr</string>
+
+    <!-- For Store Preference -->
+    <string name="SensitivityPreference">SENSITIVITY</string>
+    <string name="StepWidthPreference">STEP_WIDTH</string>
+    <string name="StepsPerDayPreference">STEPS_PER_DAY</string>
+
+    <!-- For SharedPreferences -->
+    <string name="SharedPreferences_MainKey">SharedPreferencesMainKey</string>
+</resources>

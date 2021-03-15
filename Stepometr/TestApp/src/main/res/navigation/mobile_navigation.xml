@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_stepometr">
+
+    <fragment
+        android:id="@+id/navigation_stepometr"
+        android:name="com.example.testapp.ui.stepometr.StepometrFragment"
+        android:label="Stepometr"
+        tools:layout="@layout/stepometr_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.example.testapp.ui.history.HistoryMainFragment"
+        android:label="History"
+        tools:layout="@layout/history_main_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_friends"
+        android:name="com.example.testapp.ui.friends.FriendsFragment"
+        android:label="Friends"
+        tools:layout="@layout/friends_fragment" />
+</navigation>
