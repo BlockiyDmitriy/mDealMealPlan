@@ -7,8 +7,8 @@
     <ProjectGuid>{A6E28968-58DC-404E-95C6-5CE75705AC4A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Service_DAL</RootNamespace>
-    <AssemblyName>Service_DAL</AssemblyName>
+    <RootNamespace>Service.DAL</RootNamespace>
+    <AssemblyName>Service.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -49,9 +49,9 @@
     <Folder Include="UoW\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Service_DTO\Service_DTO.csproj">
+    <ProjectReference Include="..\Service_DTO\Service.DTO.csproj">
       <Project>{13ecd592-0747-4234-975b-35543c9656ff}</Project>
-      <Name>Service_DTO</Name>
+      <Name>Service.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
